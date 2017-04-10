@@ -1,1 +1,28 @@
-<span>Hello!</span>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DNMAP</title>
+    <link rel="shortcut icon" type="image/png" href="pic/network.png"/>
+    <link href="css/chara.css" rel="stylesheet">
+    <script src="js/requirejs.min.js"></script>
+    <script src="js/chara.min.js"></script>
+</head>
+<body ng-app="charaApp" layout="row" flex>
+    <md-sidenav md-is-locked-open="true" md-component-id="left">
+        <md-content role="navigation">
+            <ul>
+                <li class="active" data-match-route="/user"><a ui-sref="user">User</a></li>
+                <li data-match-route="/task"><a ui-sref="task">Tasks</a></li>
+                <li data-match-route="/tree"><a ui-sref="tree">Trees</a></li>
+            </ul>
+        </md-content>
+    </md-sidenav>
+
+    <md-content flex class="chara-container">
+        <div ui-view="userv" ng-show="$state.includes('user')"></div>
+        <div ui-view="taskv" ng-show="$state.includes('task')"></div>
+        <div ui-view="treev" ng-show="$state.includes('tree')"></div>
+    </md-content>
+</body>
+</html>

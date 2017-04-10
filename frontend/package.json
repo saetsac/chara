@@ -1,0 +1,61 @@
+{
+  "name": "chara-frontend",
+  "version": "1.0.0",
+  "description": "Frontend part for Chara server",
+  "main": "js/chara.js",
+  "devDependencies": {
+    "angular-mocks": "^1.5.5",
+    "del": "^2.2.0",
+    "requirejs": "^2.3.x",
+    "babel-preset-env": "^1.3.x",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-bower-files": "^0.2.7",
+    "gulp-concat": "^2.5.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-less": "^3.1.0",
+    "gulp-load-plugins": "^1.2.4",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-size": "^2.1.0",
+    "gulp-uglify": "^1.5.3",
+    "jasmine": "^2.4.1",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^1.0.2"
+  },
+  "dependencies": {
+    "angular": "1.6.x",
+    "angular-animate": "1.6.x",
+    "angular-aria": "1.6.x",
+    "angular-material": "1.x",
+    "angular-messages": "1.6.x",
+    "angular-resource": "1.6.x",
+    "angular-sanitize": "1.6.x",
+    "angular-ui-router": "0.4.x",
+    "ui-router-extras": "0.1.x"
+  },
+  "scripts": {
+    "build": "gulp build"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saetsac/chara.git"
+  },
+  "keywords": [
+    "angular",
+    "chara",
+    "json"
+  ],
+  "author": "Alexander Sakharov <sakharov.3@gmail.com>",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/saetsac/chara/issues"
+  },
+  "homepage": "https://github.com/saetsac/chara#readme"
+}
