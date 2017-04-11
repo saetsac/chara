@@ -1,7 +1,7 @@
 /**
  * Created by sakharov on 10.04.17.
  */
-function DialogController($scope, $mdDialog) {
+export function DialogController($scope, $mdDialog) {
   $scope.dialog_hide = function() {
     $mdDialog.hide();
   };
