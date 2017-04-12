@@ -1,10 +1,13 @@
 /**
  * Created by sakharov on 10.04.17.
  */
-export default class taskCtrl {
+'use strict';
+
+
+export default class taskCtrl{
+    'ngInject';
     constructor($rootScope, $scope, $location, $state, $http, $templateCache, Task) {
-        this.task = new Task().resource();
+        this.res = new Task();
+        this.list = this.res.fetch();
     }
 };
-
-taskCtrl.$inject = ['$rootScope', '$scope', '$location', '$state', '$http', '$templateCache', 'Task'];

@@ -1,6 +1,4 @@
-config.$inject = ['$stateProvider', '$urlRouterProvider', '$stickyStateProvider', '$resourceProvider', '$httpProvider'];
-
-export default function config($stateProvider, $urlRouterProvider, $stickyStateProvider, $resourceProvider, $httpProvider) {
+export default /*@ngInject*/ function config($stateProvider, $urlRouterProvider, $stickyStateProvider, $resourceProvider, $httpProvider) {
     $httpProvider.interceptors.push('HTTPErrorInterceptor');
     $resourceProvider.defaults.stripTrailingSlashes = false;
     $stateProvider

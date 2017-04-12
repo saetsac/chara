@@ -16,7 +16,7 @@ module.exports = function makeWebpackConfig() {
     config.entry = isTest ? void 0 : {
         app: path.resolve(__dirname, '..', 'src', 'app', 'chara.js'),
         vendor: ['angular', "angular-animate", "angular-aria",
-            "angular-material",  "angular-messages", "angular-resource",
+            "angular-material", "angular-messages", "angular-resource",
             "angular-sanitize", 'angular-ui-router', "ui-router-extras"]
     };
 
@@ -38,40 +38,40 @@ module.exports = function makeWebpackConfig() {
     }
 
     config.module = {
-        rules: [{
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: path.resolve(__dirname, '..', 'node_modules'),
-             options: {
-                    presets: [['env', {
-                        targets: {
-                            browsers: [
-                                'defaults',
-                                'not ie < 9'
-                            ]
-                        },
-                        modules: false,
-                        useBuiltIns: true
-                    }]],
-                    plugins: []
+        rules: [
+            {
+                test: /\.js$/,
+                enforce: 'pre',
+                exclude: path.resolve(__dirname, '..', 'node_modules'),
+                use: [
+                    {loader: 'source-map-loader'},
+                ]
+            }, {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: path.resolve(__dirname, '..', 'node_modules'),
+                query: {
+                    presets: [ 'es2015', 'stage-0', 'react'],
+                    plugins: ['transform-decorators-legacy', 'transform-class-properties'],
+                    babelrc: false
                 }
-        }, {
-            test: /\.css$/,
+            }, {
+                test: /\.css$/,
 
-            loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
-                fallbackLoader: 'style-loader',
-                loader: [
-                    {loader: 'css-loader', query: {sourceMap: true}},
-                    {loader: 'postcss-loader'}
-                ],
-            })
-        }, {
-            test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-            loader: 'file-loader'
-        }, {
-            test: /\.html$/,
-            loader: 'raw-loader'
-        }]
+                loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
+                    fallbackLoader: 'style-loader',
+                    loader: [
+                        {loader: 'css-loader', query: {sourceMap: true}},
+                        {loader: 'postcss-loader'}
+                    ],
+                })
+            }, {
+                test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+                loader: 'file-loader'
+            }, {
+                test: /\.html$/,
+                loader: 'raw-loader'
+            }]
     };
 
     if (isTest) {
@@ -98,7 +98,10 @@ module.exports = function makeWebpackConfig() {
                 }
             }
         }),
-        new webpack.optimize.CommonsChunkPlugin({name: "vendor", filename: "vendor.bundle.js"})
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+            filename: "vendor.bundle.js"
+        })
     ];
 
     if (!isTest) {
@@ -132,18 +135,18 @@ module.exports = function makeWebpackConfig() {
         config.plugins.push(
             new webpack.NoEmitOnErrorsPlugin(),
             new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                screw_ie8: true,
-                warnings: false
-            },
-            mangle: {
-                screw_ie8: true
-            },
-            output: {
-                comments: false,
-                screw_ie8: true
-            }
-        }),
+                compress: {
+                    screw_ie8: true,
+                    warnings: false
+                },
+                mangle: {
+                    screw_ie8: true
+                },
+                output: {
+                    comments: false,
+                    screw_ie8: true
+                }
+            }),
             new CopyWebpackPlugin([{
                 from: path.resolve(__dirname, '..', 'src', 'public')
             }])
@@ -151,7 +154,7 @@ module.exports = function makeWebpackConfig() {
     }
 
     config.devServer = {
-        contentBase:  path.resolve(__dirname, '..', 'src', 'public'),
+        contentBase: path.resolve(__dirname, '..', 'src', 'public'),
         stats: 'minimal',
         compress: false
     };

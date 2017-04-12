@@ -11,14 +11,14 @@ const ngUIRouter = require('angular-ui-router');
 require("ui-router-extras");
 const ngUIRouterExtras = 'ct.ui.router.extras';
 
-const api = require('./chara.api.js').default.name;
 import userCtrl from './chara.ctrl.user.js';
 import taskCtrl from './chara.ctrl.task.js';
 import treeCtrl from  './chara.ctrl.tree.js';
 import config from './chara.config.js'
+import api from './api'
 
 
-export default angular.module('charaApp', [ngResource, ngAnimate, ngUIRouter, ngUIRouterExtras, ngMaterial, ngSanitize, api])
+export default angular.module('charaApp', [ngResource, ngAnimate, ngUIRouter, ngUIRouterExtras, ngMaterial, ngSanitize, api.name])
    .directive('ngEnter', function () {
         return function (scope, element, attrs) {
             element.bind("keydown keypress", function (event) {

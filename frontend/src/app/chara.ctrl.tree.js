@@ -2,11 +2,9 @@
  * Created by sakharov on 10.04.17.
  */
 export default class treeCtrl {
+    'ngInject';
     constructor($rootScope, $scope, $location, $state, $http, $templateCache, Tree){
-        console.log(Tree);
-        this.tree = new Tree().resource();
+        this.tree = new Tree();
+        this.list = this.tree.fetch();
     }
 };
-
-
-treeCtrl.$inject = ['$rootScope', '$scope', '$location', '$state', '$http', '$templateCache', 'Tree'];
